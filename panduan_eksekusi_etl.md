@@ -13,7 +13,7 @@ Pastikan perangkat lunak berikut telah terinstal dan berjalan:
 ## 2. Inisialisasi Skema Database (DDL)
 Sebelum menjalankan Pentaho, tabel-tabel di Data Warehouse harus dibuat terlebih dahulu.
 1. Buka database client/IDE Anda (DBeaver, phpMyAdmin, pgAdmin, dll).
-2. Buat database baru, misalnya dengan nama `dwh_penjualan`.
+2. Buat database baru, misalnya dengan nama `dw_nrg`.
 3. Jalankan script SQL (DDL) untuk membuat tabel dimensi dan tabel fakta (pastikan struktur tabel sesuai dengan skema yang digunakan di transformasi Pentaho).
 
 ## 3. Konfigurasi Koneksi Database di Pentaho
@@ -25,17 +25,17 @@ Agar file transformasi (`.ktr`) bisa membaca dan menulis data, Anda harus membua
 4. Buat dua koneksi utama berikut:
 
    **A. Koneksi Database Sumber (OLTP)**
-   * **Connection Name**: `DB_SUMBER` *(Catatan: Nama ini harus sama persis dengan yang dipilih pada step Table Input)*
+   * **Connection Name**: `conn_dw_nrg` *(Catatan: Nama ini harus sama persis dengan yang dipilih pada step Table Input)*
    * **Connection Type**: Pilih sesuai DBMS sumber Anda (misal: MySQL)
    * **Host Name**: `localhost` (atau IP server sumber)
-   * **Database Name**: `db_operasional` (nama database sumber)
+   * **Database Name**: `dw_nrg` (nama database sumber)
    * **Username/Password**: *Sesuai kredensial Anda*
 
    **B. Koneksi Database Tujuan (Data Warehouse / OLAP)**
-   * **Connection Name**: `DB_DWH` *(Catatan: Nama ini harus sama persis dengan yang dipilih pada step Table Output/Dimension Lookup/Update)*
+   * **Connection Name**: `conn_dw_nrg` *(Catatan: Nama ini harus sama persis dengan yang dipilih pada step Table Output/Dimension Lookup/Update)*
    * **Connection Type**: Pilih sesuai DBMS tujuan Anda
    * **Host Name**: `localhost` 
-   * **Database Name**: `dwh_penjualan`
+   * **Database Name**: `dw_nrg`
    * **Username/Password**: *Sesuai kredensial Anda*
 
 5. Klik tombol **Test** untuk memastikan koneksi berhasil, lalu klik **OK**. 
